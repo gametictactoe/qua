@@ -17,15 +17,16 @@
             min-height: 100vh;
             overflow: hidden;
             box-sizing: border-box;
+            position: relative;
         }
 
-        h1 {
+        h3 {
             color: #333;
-            margin-bottom: 20px;
-            font-size: 4vw;
+            margin-top: 20px; /* Đảm bảo khoảng cách giữa h3 và phần tử trên */
+            font-size: 5vw; /* Đảm bảo h1 scale tốt trên điện thoại */
             text-align: center;
-            animation: textAnimation 3s ease-in-out infinite;
-            margin-top: 0;
+            position: relative;
+            z-index: 10; /* Đặt h3 lên trên mây */
         }
 
         /* Khung chứa ảnh */
@@ -91,6 +92,7 @@
             gap: 3vw;
             flex-wrap: wrap;
             justify-content: center;
+            margin-top: 5vw; /* Dịch hộp quà xuống dưới ảnh */
         }
 
         /* Đám mây bồng bềnh */
@@ -99,6 +101,7 @@
             background: url('cloud.png') no-repeat center center;
             background-size: contain;
             animation: cloudMove 10s ease-in-out infinite;
+            z-index: 1; /* Đảm bảo mây ở dưới */
         }
 
         .cloud.small {
@@ -122,7 +125,6 @@
             left: 70%;
         }
 
-        /* Thêm mây mới */
         .cloud.extra-small {
             width: 40px;
             height: 40px;
@@ -139,7 +141,6 @@
             animation: cloudMove 15s ease-in-out infinite;
         }
 
-        /* Thêm mây mới để nhân đôi số lượng mây */
         .cloud.extra-small-two {
             width: 40px;
             height: 40px;
@@ -156,7 +157,6 @@
             animation: cloudMove 17s ease-in-out infinite;
         }
 
-        /* Mặt trời tỏa nắng */
         .sun {
             position: absolute;
             width: 80px;
@@ -173,34 +173,18 @@
         .rabbit {
             position: absolute;
             bottom: 5px;
-            width: 40px;
-            height: 40px;
+            width: 30px; /* Reduced size for mobile */
+            height: 30px;
             background: #fff;
             border-radius: 50%;
             box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
             animation: rabbitMove 4s linear infinite;
         }
 
-        .rabbit::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 25%;
-            width: 10px;
-            height: 10px;
+        .rabbit::before, .rabbit::after {
+            width: 6px;
+            height: 6px;
             background: #000;
-            border-radius: 50%;
-        }
-
-        .rabbit::after {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 55%;
-            width: 10px;
-            height: 10px;
-            background: #000;
-            border-radius: 50%;
         }
 
         /* Thỏ bên trái */
@@ -229,15 +213,10 @@
         }
 
         @keyframes sunAnimation {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(10px);
-            }
+            0% { transform: translateY(0); }
+            100% { transform: translateY(10px); }
         }
 
-        /* Tạo khoảng cách giữa các ảnh */
         .image-container.left,
         .image-container.right {
             position: absolute;
@@ -263,7 +242,6 @@
             animation: fadeIn 2s forwards;
         }
 
-        /* Text inside gift box */
         .gift-text {
             position: absolute;
             top: 50%;
@@ -279,8 +257,8 @@
 
         /* Đảm bảo tính tương thích trên các kích thước màn hình */
         @media screen and (max-width: 1024px) {
-            h1 {
-                font-size: 5vw;
+            h3 {
+                font-size: 6vw;
             }
 
             .gift {
@@ -301,22 +279,7 @@
                 height: 35vw;
             }
 
-            h1 {
-                font-size: 6vw;
-            }
-
-            .gift-text {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .gift {
-                width: 40vw;
-                height: 40vw;
-            }
-
-            h1 {
+            h3 {
                 font-size: 7vw;
             }
 
@@ -374,20 +337,11 @@
     <div class="rabbit rabbit-left"></div>
     <div class="rabbit rabbit-right"></div>
 
-    <!-- Lời chúc -->
-    <div id="message"></div>
+    <!-- Lời chúc (Đã bỏ đi) -->
+    <!-- <div id="message"></div> -->
 
     <script>
         function showMessage(giftNumber) {
-            const messages = [
-                "Chúc bạn luôn mạnh mẽ và hạnh phúc!",
-                "Hy vọng mọi điều tốt đẹp sẽ đến với bạn!",
-                "Mong bạn luôn đạt được thành công trong mọi công việc!"
-            ];
-
-            // Hiển thị thông điệp
-            document.getElementById("message").innerText = messages[giftNumber - 1];
-
             const gifts = document.querySelectorAll('.gift');
             const lids = document.querySelectorAll('.lid');
             const texts = document.querySelectorAll('.gift-text');
