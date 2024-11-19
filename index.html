@@ -17,7 +17,6 @@
             min-height: 100vh;
             overflow: hidden;
             box-sizing: border-box;
-            position: relative;
         }
 
         h3 {
@@ -26,7 +25,7 @@
             font-size: 5vw; /* Đảm bảo h1 scale tốt trên điện thoại */
             text-align: center;
             position: relative;
-            z-index: 10; /* Đặt h3 lên trên mây */
+            z-index: 10; 
         }
 
         /* Khung chứa ảnh */
@@ -97,11 +96,11 @@
 
         /* Đám mây bồng bềnh */
         .cloud {
-            position: absolute;
-            background: url('cloud.png') no-repeat center center;
-            background-size: contain;
-            animation: cloudMove 10s ease-in-out infinite;
-            z-index: 1; /* Đảm bảo mây ở dưới */
+                position: absolute;
+        background: url('cloud.png') no-repeat center center;
+        background-size: contain;
+        animation: cloudMove 10s ease-in-out infinite;
+        z-index: 1;
         }
 
         .cloud.small {
@@ -284,6 +283,21 @@
             }
 
             .gift-text {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .gift {
+                width: 40vw;
+                height: 40vw;
+            }
+
+            h3 {
+                font-size: 8vw;
+            }
+
+            .gift-text {
                 font-size: 0.8rem;
             }
         }
@@ -337,11 +351,20 @@
     <div class="rabbit rabbit-left"></div>
     <div class="rabbit rabbit-right"></div>
 
-    <!-- Lời chúc (Đã bỏ đi) -->
-    <!-- <div id="message"></div> -->
+    <!-- Lời chúc -->
+    <div id="message"></div>
 
     <script>
         function showMessage(giftNumber) {
+            const messages = [
+                "Chúc bạn luôn mạnh mẽ và hạnh phúc!",
+                "Hy vọng mọi điều tốt đẹp sẽ đến với bạn!",
+                "Mong bạn luôn đạt được thành công trong mọi công việc!"
+            ];
+
+            // Hiển thị thông điệp
+            document.getElementById("message").innerText = messages[giftNumber - 1];
+
             const gifts = document.querySelectorAll('.gift');
             const lids = document.querySelectorAll('.lid');
             const texts = document.querySelectorAll('.gift-text');
