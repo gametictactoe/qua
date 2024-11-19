@@ -24,8 +24,6 @@
             margin-top: 20px; /* Đảm bảo khoảng cách giữa h3 và phần tử trên */
             font-size: 5vw; /* Đảm bảo h1 scale tốt trên điện thoại */
             text-align: center;
-            position: relative;
-            z-index: 10; 
         }
 
         /* Khung chứa ảnh */
@@ -96,11 +94,10 @@
 
         /* Đám mây bồng bềnh */
         .cloud {
-                position: absolute;
-        background: url('cloud.png') no-repeat center center;
-        background-size: contain;
-        animation: cloudMove 10s ease-in-out infinite;
-        z-index: 1;
+            position: absolute;
+            background: url('cloud.png') no-repeat center center;
+            background-size: contain;
+            animation: cloudMove 10s ease-in-out infinite;
         }
 
         .cloud.small {
@@ -379,4 +376,4 @@
         }
     </script>
 </body>
-</html>
+</html>  
