@@ -22,10 +22,10 @@
         h3 {
             color: #333;
             margin-top: 20px; /* Đảm bảo khoảng cách giữa h3 và phần tử trên */
-            font-size: 5vw; /* Đảm bảo h1 scale tốt trên điện thoại */
+            font-size: 8vw; /* Điều chỉnh kích thước văn bản cho phù hợp */
             text-align: center;
             position: relative;
-            z-index: 10; 
+            z-index: 10;
         }
 
         /* Khung chứa ảnh */
@@ -39,7 +39,7 @@
         .image-container img {
             width: 100%;
             height: auto;
-            max-width: 25vw;
+            max-width: 90vw; /* Hạn chế kích thước của ảnh */
             border-radius: 15px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
@@ -51,7 +51,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        /* Gói quà vẽ tay */
+        /* Gói quà */
         .gift {
             position: relative;
             width: 25vw;
@@ -67,7 +67,6 @@
             overflow: hidden;
         }
 
-        /* Nắp hộp quà */
         .gift .lid {
             position: absolute;
             top: 0;
@@ -79,28 +78,26 @@
             transition: all 0.5s ease-in-out;
         }
 
-        /* Hiệu ứng mở nắp */
         .gift.opened .lid {
             top: -50%;
             transform: rotateX(90deg);
         }
 
-        /* Khung chứa gói quà */
         .gifts-container {
             display: flex;
             gap: 3vw;
             flex-wrap: wrap;
             justify-content: center;
-            margin-top: 5vw; /* Dịch hộp quà xuống dưới ảnh */
+            margin-top: 5vw;
         }
 
         /* Đám mây bồng bềnh */
         .cloud {
-                position: absolute;
-        background: url('cloud.png') no-repeat center center;
-        background-size: contain;
-        animation: cloudMove 10s ease-in-out infinite;
-        z-index: 1;
+            position: absolute;
+            background: url('cloud.png') no-repeat center center;
+            background-size: contain;
+            animation: cloudMove 10s ease-in-out infinite;
+            z-index: 1;
         }
 
         .cloud.small {
@@ -172,7 +169,7 @@
         .rabbit {
             position: absolute;
             bottom: 5px;
-            width: 30px; /* Reduced size for mobile */
+            width: 30px;
             height: 30px;
             background: #fff;
             border-radius: 50%;
@@ -186,13 +183,11 @@
             background: #000;
         }
 
-        /* Thỏ bên trái */
         .rabbit-left {
             left: 0;
             animation-direction: normal;
         }
 
-        /* Thỏ bên phải */
         .rabbit-right {
             right: 0;
             animation-direction: reverse;
@@ -231,10 +226,10 @@
             right: 10px;
         }
 
-        /* Thông điệp */
+        /* Lời chúc */
         #message {
             margin-top: 20px;
-            font-size: 2.5vw;
+            font-size: 3.5vw; /* Cân đối với các màn hình lớn nhỏ */
             color: #333;
             text-align: center;
             opacity: 0;
@@ -254,7 +249,7 @@
             transition: opacity 0.5s ease;
         }
 
-        /* Đảm bảo tính tương thích trên các kích thước màn hình */
+        /* Điều chỉnh cho các màn hình nhỏ */
         @media screen and (max-width: 1024px) {
             h3 {
                 font-size: 6vw;
@@ -327,8 +322,8 @@
     <div class="cloud large"></div>
     <div class="cloud extra-small"></div>
     <div class="cloud extra-large"></div>
-    <div class="cloud extra-small-two"></div> <!-- Mây thứ sáu -->
-    <div class="cloud extra-large-two"></div> <!-- Mây thứ bảy -->
+    <div class="cloud extra-small-two"></div>
+    <div class="cloud extra-large-two"></div>
     <div class="sun"></div>
 
     <!-- Gói quà -->
